@@ -28,6 +28,16 @@ namespace Ejyle.DevAccelerate.Enterprise.Identity
         public string Email { get; set; }
 
         /// <summary>
+        /// Gets the first name of a user.
+        /// </summary>
+        public string FirstName { get; set; }
+
+        /// <summary>
+        /// Gets the last name of a user.
+        /// </summary>
+        public string LastName { get; set; }
+
+        /// <summary>
         /// Determines if a user's email address is verified or not.
         /// </summary>
         public bool IsEmailConfirmed { get; set; }

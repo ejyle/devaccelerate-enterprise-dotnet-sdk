@@ -13,16 +13,6 @@ namespace Ejyle.DevAccelerate.Enterprise.Identity
     public class DaeUser : DaeUserBase
     {
         /// <summary>
-        /// Gets the first name of a user.
-        /// </summary>
-        public string FirstName { get; set; }
-
-        /// <summary>
-        /// Gets the last name of a user.
-        /// </summary>
-        public string LastName { get; set; }
-
-        /// <summary>
         /// Gets the current status of a user.
         /// </summary>
         public DaeAccountStatus Status { get; set; }

@@ -5,6 +5,7 @@
 // Licensed under the MIT license. See the LICENSE file in the project's root directory for complete license information.
 // ----------------------------------------------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
@@ -46,6 +47,15 @@ namespace Ejyle.DevAccelerate.Enterprise.Identity
                         break;
                     case "name":
                         user.Name = claim.Value;
+                        break;
+                    case "given_name":
+                        user.FirstName = claim.Value;
+                        break;
+                    case "family_name":
+                        user.LastName = claim.Value;
+                        break;
+                    case "email_verified":
+                        user.IsEmailConfirmed = Convert.ToBoolean(claim.Value);
                         break;
                     case "email":
                         user.Email = claim.Value;
