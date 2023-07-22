@@ -5,12 +5,8 @@
 // Licensed under the MIT license. See the LICENSE file in the project's root directory for complete license information.
 // ----------------------------------------------------------------------------------------------------------------------
 
-using IdentityModel.Client;
 using System;
 using System.Collections.Generic;
-using System.Net;
-using System.Net.Http;
-using System.Security.Cryptography;
 using System.Threading.Tasks;
 
 namespace Ejyle.DevAccelerate.Enterprise.Identity
@@ -59,9 +55,31 @@ namespace Ejyle.DevAccelerate.Enterprise.Identity
         /// <summary>
         /// Gets a tenant by tenant ID as a JSON string.
         /// </summary>
+        /// <param name="id">The ID of the tenant.</param>
+        /// <returns>Returns a JSON string.</returns>
         public async Task<string> GetTenantsByIdAsStringAsync(string id)
         {
             return await GetStringAsync("tenants", new Dictionary<string, string> {{ "id", id }});
+        }
+
+        /// <summary>
+        /// Gets a list of tenants.
+        /// </summary>
+        /// <returns>Returns an array of <see cref="DaeTenant"/>.</returns>
+        public async Task<DaeTenant[]> GetTenantsAsync()
+        {
+            var tenants = await GetArrayAsync<DaeTenant>("tenants");
+            return tenants;
+        }
+
+        /// <summary>
+        /// Gets a tenant by ID.
+        /// </summary>
+        /// <param name="id">The ID of the tenant.</param>
+        /// <returns>Returns an instance of the <see cref="DaeTenant"/> class.</returns>
+        public async Task<DaeTenant> GetTenantByIdAsync(string id)
+        {
+            return await GetAsync<DaeTenant>("tenants", new Dictionary<string, string> { { "id", id } });
         }
     }
 }

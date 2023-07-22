@@ -7,13 +7,11 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using IdentityModel.Client;
-using System.Security.Policy;
+using Newtonsoft.Json;
 
 namespace Ejyle.DevAccelerate.Enterprise
 {
@@ -104,7 +102,61 @@ namespace Ejyle.DevAccelerate.Enterprise
         protected string AccessToken { get; private set; }
 
         /// <summary>
-        /// Calls a DevAccelerate Enterprise API.
+        /// Calls a DevAccelerate Enterprise API and returns an array of objects.
+        /// </summary>
+        /// <param name="path">The path of the API</param>
+        /// <returns>Returns API response as an array of the generic type of T.</returns>
+        /// <exception cref="HttpRequestException">If API returns a non-success HTTP status code. The HTTP status code included in the Message property of the exception.</exception>
+        public async Task<T[]> GetArrayAsync<T>(string path)
+        {
+            var response = await GetStringAsync(path);
+            var deserializedData = JsonConvert.DeserializeObject<DaeApiResponseArray<T>>(response);
+            return deserializedData.Data;
+        }
+
+        /// <summary>
+        /// Calls a DevAccelerate Enterprise API and returns an array of objects.
+        /// </summary>
+        /// <param name="path">The path of the API</param>
+        /// <param name="parameters">The set of parameters to be included in the API call.</param>
+        /// <returns>Returns API response as an array of the generic type of T.</returns>
+        /// <exception cref="HttpRequestException">If API returns a non-success HTTP status code. The HTTP status code included in the Message property of the exception.</exception>
+        public async Task<T[]> GetArrayAsync<T>(string path, Dictionary<string, string> parameters)
+        {
+            var response = await GetStringAsync(path, parameters);
+            var deserializedData = JsonConvert.DeserializeObject<DaeApiResponseArray<T>>(response);
+            return deserializedData.Data;
+        }
+
+        /// <summary>
+        /// Calls a DevAccelerate Enterprise API and returns an object.
+        /// </summary>
+        /// <param name="path">The path of the API</param>
+        /// <param name="parameters">The set of parameters to be included in the API call.</param>
+        /// <returns>Returns API response as an array of the generic type of T.</returns>
+        /// <exception cref="HttpRequestException">If API returns a non-success HTTP status code. The HTTP status code included in the Message property of the exception.</exception>
+        public async Task<T> GetAsync<T>(string path, Dictionary<string, string> parameters)
+        {
+            var response = await GetStringAsync(path, parameters);
+            var deserializedData = JsonConvert.DeserializeObject<DaeApiResponse<T>> (response);
+            return deserializedData.Data;
+        }
+
+        /// <summary>
+        /// Calls a DevAccelerate Enterprise API and returns an object.
+        /// </summary>
+        /// <param name="path">The path of the API</param>
+        /// <returns>Returns API response as an array of the generic type of T.</returns>
+        /// <exception cref="HttpRequestException">If API returns a non-success HTTP status code. The HTTP status code included in the Message property of the exception.</exception>
+        public async Task<T> GetAsync<T>(string path)
+        {
+            var response = await GetStringAsync(path);
+            var deserializedData = JsonConvert.DeserializeObject<T>(response);
+            return deserializedData;
+        }
+
+        /// <summary>
+        /// Calls a DevAccelerate Enterprise API and returns a string response.
         /// </summary>
         /// <param name="path">The path of the API</param>
         /// <returns>Returns API response as a string.</returns>
@@ -115,7 +167,7 @@ namespace Ejyle.DevAccelerate.Enterprise
         }
 
         /// <summary>
-        /// Calls a DevAccelerate Enterprise API.
+        /// Calls a DevAccelerate Enterprise API and returns a string response.
         /// </summary>
         /// <param name="path">The path of the API</param>
         /// <param name="parameters">The set of parameters to be included in the API call.</param>
