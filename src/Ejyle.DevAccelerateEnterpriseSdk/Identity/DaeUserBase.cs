@@ -8,23 +8,28 @@
 namespace Ejyle.DevAccelerate.Enterprise.Identity
 {
     /// <summary>
-    /// Represents an API user in DevAccelerate Enterprise.
+    /// Represents the base class of a user.
     /// </summary>
-    public class DaeUser : DaeUserBase
+    public abstract class DaeUserBase
     {
         /// <summary>
-        /// Gets the first name of a user.
+        /// Gets the unique of a user.
         /// </summary>
-        public string FirstName { get; set; }
+        public string Id { get; set; }
 
         /// <summary>
-        /// Gets the last name of a user.
+        /// Gets the unique name of a user.
         /// </summary>
-        public string LastName { get; set; }
+        public string UserName { get; set; }
 
         /// <summary>
-        /// Gets the current status of a user.
+        /// Gets the email address of a user.
         /// </summary>
-        public DaeAccountStatus Status { get; set; }
+        public string Email { get; set; }
+
+        /// <summary>
+        /// Determines if a user's email address is verified or not.
+        /// </summary>
+        public bool IsEmailConfirmed { get; set; }
     }
 }

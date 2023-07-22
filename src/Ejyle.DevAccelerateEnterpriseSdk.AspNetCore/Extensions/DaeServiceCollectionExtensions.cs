@@ -7,7 +7,9 @@
 
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Logging;
 using System;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace Ejyle.DevAccelerate.Enterprise.AspNetCore.Extensions
 {
@@ -27,8 +29,10 @@ namespace Ejyle.DevAccelerate.Enterprise.AspNetCore.Extensions
         /// <param name="clientSecret">The client secret of the DevAccelerate Enterprise API service.</param>
         /// <param name="scopes">An array of scopes. If not provided then the default list of scopes will be used.</param>
         /// <param name="claimsFromUserInfoEndpoint">Determines if user info endpoint is used to retrieve additional claims. The default value is true.</param>
+        /// <param name="defaultMapInboundClaims">Determines if the InboundClaimTypeMap is used.</param>
+        /// <param name="piiInLogs">Determines if the PII is shown in logs.</param>
         /// <returns>Returns an instance of the <see cref="AuthenticationBuilder"/> class which can be used to further configure authentication.</returns>
-        public static AuthenticationBuilder AddDaeOpenIdAuthentication(this IServiceCollection services, string clientId, string clientSecret ,string authority = "https://account.ejyle.com", string[] scopes = null, bool claimsFromUserInfoEndpoint = true)
+        public static AuthenticationBuilder AddDaeOpenIdAuthentication(this IServiceCollection services, string clientId, string clientSecret ,string authority = "https://account.ejyle.com", string[] scopes = null, bool claimsFromUserInfoEndpoint = true, bool defaultMapInboundClaims= false, bool piiInLogs = false)
         {
             if(string.IsNullOrEmpty(clientId))
             {
@@ -39,6 +43,9 @@ namespace Ejyle.DevAccelerate.Enterprise.AspNetCore.Extensions
             {
                 throw new ArgumentNullException(nameof(clientSecret));
             }
+
+            JwtSecurityTokenHandler.DefaultMapInboundClaims = defaultMapInboundClaims;
+            IdentityModelEventSource.ShowPII = piiInLogs;
 
             return services.AddAuthentication(options =>
             {
@@ -76,7 +83,6 @@ namespace Ejyle.DevAccelerate.Enterprise.AspNetCore.Extensions
                         options.Scope.Add(scope);
                     }
                 }
-
 
                 options.GetClaimsFromUserInfoEndpoint = claimsFromUserInfoEndpoint;
             });
