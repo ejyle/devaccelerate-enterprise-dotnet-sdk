@@ -7,24 +7,21 @@
 
 namespace Ejyle.DevAccelerate.Enterprise.Identity
 {
-    /// <summary>
-    /// Represents an API user in DevAccelerate Enterprise.
-    /// </summary>
-    public class DaeUser : DaeUserBase
+    public class DaeClaimsUser : DaeUserBase
     {
         /// <summary>
-        /// Gets the first name of a user.
+        /// Gets the name of a user.
         /// </summary>
-        public string FirstName { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
-        /// Gets the last name of a user.
+        /// Gets the user's tenant ID.
         /// </summary>
-        public string LastName { get; set; }
+        public string Tenant { get; set; }
 
         /// <summary>
-        /// Gets the current status of a user.
+        /// Gets a list of roles assigned to a user.
         /// </summary>
-        public DaeAccountStatus Status { get; set; }
+        public string[] Roles { get; set; }
     }
 }
