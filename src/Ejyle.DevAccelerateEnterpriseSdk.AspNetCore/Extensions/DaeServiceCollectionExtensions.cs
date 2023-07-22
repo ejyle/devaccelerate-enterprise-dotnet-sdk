@@ -5,7 +5,6 @@
 // Licensed under the MIT license. See the LICENSE file in the project's root directory for complete license information.
 // ----------------------------------------------------------------------------------------------------------------------
 
-using Ejyle.DevAccelerate.Enterprise.AspNetCore.Extensions;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -24,12 +23,12 @@ namespace Ejyle.DevAccelerate.Enterprise.AspNetCore.Extensions
         /// </summary>
         /// <param name="services">The <see cref="IServiceCollection"/> parameter.</param>
         /// <param name="authority">The authority parameter. The default value is https://account.ejyle.com.</param>
-        /// <param name="clientId">The client ID of the DevAccelerate IAM service.</param>
-        /// <param name="clientSecret">The client secret of the DevAccelerate Enterprise IAM service.</param>
-        /// <param name="scopes">An array of scopes. The default list of scopes is: <see cref="_scopes"/>.</param>
-        /// <param name="getClaimsFromUserInfoEndpoint">The getClaimsFromUserInfoEndpoint parameter. The default value is true.</param>
-        /// <returns>A <see cref="AuthenticationBuilder"/> that can be used to further configure authentication.</returns>
-        public static AuthenticationBuilder AddDaeAuthentication(this IServiceCollection services, string clientId = null, string clientSecret = null ,string authority = "https://account.ejyle.com", string[] scopes = null, bool getClaimsFromUserInfoEndpoint = true)
+        /// <param name="clientId">The client ID of the DevAccelerate Enterprise API service.</param>
+        /// <param name="clientSecret">The client secret of the DevAccelerate Enterprise API service.</param>
+        /// <param name="scopes">An array of scopes. If not provided then the default list of scopes will be used.</param>
+        /// <param name="claimsFromUserInfoEndpoint">Determines if user info endpoint is used to retrieve additional claims. The default value is true.</param>
+        /// <returns>Returns an instance of the <see cref="AuthenticationBuilder"/> class which can be used to further configure authentication.</returns>
+        public static AuthenticationBuilder AddDaeOpenIdAuthentication(this IServiceCollection services, string clientId, string clientSecret ,string authority = "https://account.ejyle.com", string[] scopes = null, bool claimsFromUserInfoEndpoint = true)
         {
             if(string.IsNullOrEmpty(clientId))
             {
@@ -79,7 +78,7 @@ namespace Ejyle.DevAccelerate.Enterprise.AspNetCore.Extensions
                 }
 
 
-                options.GetClaimsFromUserInfoEndpoint = getClaimsFromUserInfoEndpoint;
+                options.GetClaimsFromUserInfoEndpoint = claimsFromUserInfoEndpoint;
             });
         }
     }
