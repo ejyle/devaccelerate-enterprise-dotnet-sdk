@@ -11,8 +11,8 @@
 		<AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb;.xml</AllowedOutputExtensionsInPackageBuildOutputFolder>		
 	</PropertyGroup>
 	<PropertyGroup>
-		<RootNamespace>Ejyle.DevAccelerate.Enterprise.Identity</RootNamespace>
-		<AssemblyName>Ejyle.DevAccelerate.Enterprise.Identity</AssemblyName>
+		<RootNamespace>Ejyle.DevAccelerate.Enterprise</RootNamespace>
+		<AssemblyName>Ejyle.DevAccelerateEnterpriseSdk</AssemblyName>
 		<ApplicationIcon>da.ico</ApplicationIcon>
 		<Company>Ejyle Technologies (P) Ltd</Company>
 		<Authors>Tanveer Yousuf</Authors>
@@ -21,10 +21,10 @@
 		<RepositoryUrl>https://github.com/ejyle/devaccelerate-enterprise-dotnet-sdk.git</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-		<PackageId>DevAccelerateEnterpriseSdkIdentity</PackageId>
-		<Product>DevAccelerateEnterpriseSdkIdentity</Product>
-		<Description>A DevAccelerate Enterprise SDK that consumes IAM APIs.</Description>
-		<PackageTags>DevAccelerate;Enterprise;DevAccelerateEnterprise;SSO;IAM;Identity;Identity-Access-Management;ASPNetCore</PackageTags>
+		<PackageId>DevAccelerateEnterpriseSdk</PackageId>
+		<Product>DevAccelerateEnterpriseSdk</Product>
+		<Description>A .NET SDK that consumes DevAccelerate Enterprise APIs.</Description>
+		<PackageTags>Ejyle;DevAccelerate;Enterprise;DevAccelerateEnterprise;DevAccelerateEnterpriseSdk;SSO;IAM;Identity;Identity-Access-Management</PackageTags>
 		<Nullable>disable</Nullable>		
 		<PackageReleaseNotes>Please see https://github.com/ejyle/devaccelerate-enterprise-dotnet-sdk/releases</PackageReleaseNotes>
 		<PackageIcon>logo.png</PackageIcon>

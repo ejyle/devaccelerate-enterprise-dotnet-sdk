@@ -5,10 +5,8 @@
 // Licensed under the MIT license. See the LICENSE file in the project's root directory for complete license information.
 // ----------------------------------------------------------------------------------------------------------------------
 
-using IdentityModel.Client;
 using System;
-using System.Net;
-using System.Net.Http;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Ejyle.DevAccelerate.Enterprise.Identity
@@ -27,7 +25,7 @@ namespace Ejyle.DevAccelerate.Enterprise.Identity
         /// <exception cref="ArgumentNullException">If address or apiVersion, accessToken is empty or null.</exception>
         public DaeUsersApi(string address, string apiVersion, string accessToken)
             : base(address, apiVersion, accessToken) { }
-        
+
 
         /// <summary>
         /// Creates an instance of the <see cref="DaeUsersApi"/> class.
@@ -49,9 +47,39 @@ namespace Ejyle.DevAccelerate.Enterprise.Identity
         /// <summary>
         /// Gets a list of users as a JSON string.
         /// </summary>
-        public async Task<string> GetUsersAsString()
+        /// <returns>Returns a JSON string.</returns>
+        public async Task<string> GetUsersAsStringAsync()
         {
-            return await CallApi("users");
+            return await GetStringAsync("users");
+        }
+
+        /// <summary>
+        /// Gets a list of users.
+        /// </summary>
+        /// <returns>Returns an array of <see cref="DaeUser"/>.</returns>
+        public async Task<DaeUser[]> GetUsersAsync()
+        {
+            var users = await GetArrayAsync<DaeUser>("users");
+            return users;
+        }
+
+        /// <summary>
+        /// Gets a user by ID.
+        /// </summary>
+        /// <param name="id">The ID of the user.</param>
+        public async Task<DaeUser> GetUserByIdAsync(string id)
+        {
+            return await GetAsync<DaeUser>("users" , new Dictionary<string, string> { { "id", id } });
+        }
+
+        /// <summary>
+        /// Gets a user by user ID as a JSON string.
+        /// </summary>
+        /// <param name="id">The ID of the user.</param>
+        /// <returns>Returns a JSON string.</returns>
+        public async Task<string> GetUserByIdAsStringAsync(string id)
+        {
+            return await GetStringAsync("users", new Dictionary<string, string> {{ "id", id }});
         }
     }
 }
