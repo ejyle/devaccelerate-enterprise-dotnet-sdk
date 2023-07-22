@@ -14,7 +14,7 @@ using System.Text;
 using System.Threading.Tasks;
 using IdentityModel.Client;
 
-namespace Ejyle.DevAccelerate.Enterprise.Identity
+namespace Ejyle.DevAccelerate.Enterprise
 {
     /// <summary>
     /// Represents the core DevAccelerate Enterprise API wrapper.

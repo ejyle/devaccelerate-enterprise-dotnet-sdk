@@ -27,7 +27,7 @@ namespace Ejyle.DevAccelerate.Enterprise.Identity
         /// <exception cref="ArgumentNullException">If address or apiVersion, accessToken is empty or null.</exception>
         public DaeUsersApi(string address, string apiVersion, string accessToken)
             : base(address, apiVersion, accessToken) { }
-        
+
 
         /// <summary>
         /// Creates an instance of the <see cref="DaeUsersApi"/> class.

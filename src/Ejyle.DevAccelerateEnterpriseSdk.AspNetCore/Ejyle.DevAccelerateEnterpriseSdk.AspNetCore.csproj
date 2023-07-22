@@ -12,7 +12,7 @@
 	</PropertyGroup>
 	<PropertyGroup>
 		<RootNamespace>Ejyle.DevAccelerate.Enterprise.AspNetCore</RootNamespace>
-		<AssemblyName>Ejyle.DevAccelerate.Enterprise.AspNetCore</AssemblyName>
+		<AssemblyName>Ejyle.DevAccelerateEnterpriseSdk.AspNetCore</AssemblyName>
 		<ApplicationIcon>da.ico</ApplicationIcon>
 		<Company>Ejyle Technologies (P) Ltd</Company>
 		<Authors>Tanveer Yousuf</Authors>
@@ -23,8 +23,8 @@
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<PackageId>DevAccelerateEnterpriseSdkAspNetCore</PackageId>
 		<Product>DevAccelerateEnterpriseSdkAspNetCore</Product>
-		<Description>An DevAccelerate Enterprise SDK for ASP.NET Core applications.</Description>
-		<PackageTags>DevAccelerate;Enterprise;DevAccelerateEnterprise;SSO;IAM;Identity;Identity-Access-Management;ASPNetCore</PackageTags>
+		<Description>A DevAccelerate Enterprise SDK with extensions for ASP.NET Core applications.</Description>
+		<PackageTags>Ejyle;DevAccelerate;Enterprise;DevAccelerateEnterprise;DevAccelerateEnterpriseSdk;SSO;IAM;Identity;Identity-Access-Management;OIDC;ASPNetCore</PackageTags>
 		<Nullable>disable</Nullable>		
 		<PackageReleaseNotes>Please see https://github.com/ejyle/devaccelerate-enterprise-dotnet-sdk/releases</PackageReleaseNotes>
 		<PackageIcon>logo.png</PackageIcon>
