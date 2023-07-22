@@ -16,52 +16,52 @@ using System.Threading.Tasks;
 namespace Ejyle.DevAccelerate.Enterprise.Identity
 {
     /// <summary>
-    /// Represents a wrapper of the /users API of DevAccelerate Enterprise.
+    /// Represents a wrapper of the /tenants API of DevAccelerate Enterprise.
     /// </summary>
-    public class DaeUsersApi : DaeApiConsumer
+    public class DaeTenantsApi : DaeApiConsumer
     {
         /// <summary>
-        /// Creates an instance of the <see cref="DaeUsersApi"/> class.
+        /// Creates an instance of the <see cref="DaeTenantsApi"/> class.
         /// </summary>
         /// <param name="accessToken">The access token.</param>
         /// <param name="apiVersion">The API version.</param>
         /// <param name="address">The root address of the APIs.</param>
         /// <exception cref="ArgumentNullException">If address or apiVersion, accessToken is empty or null.</exception>
-        public DaeUsersApi(string address, string apiVersion, string accessToken)
+        public DaeTenantsApi(string address, string apiVersion, string accessToken)
             : base(address, apiVersion, accessToken) { }
 
 
         /// <summary>
-        /// Creates an instance of the <see cref="DaeUsersApi"/> class.
+        /// Creates an instance of the <see cref="DaeTenantsApi"/> class.
         /// </summary>
         /// <param name="address">The root address of the APIs.</param> 
         /// <param name="accessToken">The access token.</param>
         /// <exception cref="ArgumentNullException">If address or accessToken is empty or null.</exception>
-        public DaeUsersApi(string address, string accessToken)
+        public DaeTenantsApi(string address, string accessToken)
         : base(address, accessToken) { }
 
         /// <summary>
-        /// Creates an instance of the <see cref="DaeUsersApi"/> class.
+        /// Creates an instance of the <see cref="DaeTenantsApi"/> class.
         /// </summary>
         /// <param name="accessToken">The access token.</param>
         /// <exception cref="ArgumentNullException">If accessToken is empty or null.</exception>
-        public DaeUsersApi(string accessToken)
+        public DaeTenantsApi(string accessToken)
         : base(accessToken) { }
 
         /// <summary>
-        /// Gets a list of users as a JSON string.
+        /// Gets a list of tenants as a JSON string.
         /// </summary>
-        public async Task<string> GetUsersAsStringAsync()
+        public async Task<string> GetTenantsAsStringAsync()
         {
-            return await GetStringAsync("users");
+            return await GetStringAsync("tenants");
         }
 
         /// <summary>
-        /// Gets a user by user ID as a JSON string.
+        /// Gets a tenant by tenant ID as a JSON string.
         /// </summary>
-        public async Task<string> GetUserByIdAsStringAsync(string id)
+        public async Task<string> GetTenantsByIdAsStringAsync(string id)
         {
-            return await GetStringAsync("users", new Dictionary<string, string> {{ "id", id }});
+            return await GetStringAsync("tenants", new Dictionary<string, string> {{ "id", id }});
         }
     }
 }

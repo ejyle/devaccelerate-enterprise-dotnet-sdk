@@ -13,6 +13,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using IdentityModel.Client;
+using System.Security.Policy;
 
 namespace Ejyle.DevAccelerate.Enterprise
 {
@@ -103,26 +104,59 @@ namespace Ejyle.DevAccelerate.Enterprise
         protected string AccessToken { get; private set; }
 
         /// <summary>
-        /// Calls a DevAccelerate Enterprise APIs.
+        /// Calls a DevAccelerate Enterprise API.
         /// </summary>
         /// <param name="path">The path of the API</param>
         /// <returns>Returns API response as a string.</returns>
         /// <exception cref="HttpRequestException">If API returns a non-success HTTP status code. The HTTP status code included in the Message property of the exception.</exception>
-        protected async Task<string> CallApi(string path)
+        protected Task<string> GetStringAsync(string path)
+        {
+            return GetStringAsync(path, null);
+        }
+
+        /// <summary>
+        /// Calls a DevAccelerate Enterprise API.
+        /// </summary>
+        /// <param name="path">The path of the API</param>
+        /// <param name="parameters">The set of parameters to be included in the API call.</param>
+        /// <returns>Returns API response as a string.</returns>
+        /// <exception cref="HttpRequestException">If API returns a non-success HTTP status code. The HTTP status code included in the Message property of the exception.</exception>
+        protected async Task<string> GetStringAsync(string path, Dictionary<string, string> parameters)
         {
             var apiClient = new HttpClient();
             apiClient.SetBearerToken(AccessToken);
 
-            string sPath = path;
+            var uri = new StringBuilder();
+            uri.Append($"{Address}/{ApiVersion}");
 
-            if(!sPath.StartsWith("/"))
+            if (!path.StartsWith("/"))
             {
-                sPath = "/" + sPath;
+                uri.Append("/");
             }
 
-            var uri = $"{Address}/{ApiVersion}{sPath}";
+            uri.Append(path);
 
-            var response = await apiClient.GetAsync(uri);
+            if (parameters != null && parameters.Count > 0)
+            {
+                if(!path.Contains("?"))
+                {
+                    uri.Append("?");
+                }
+                else
+                {
+                    if(!path.EndsWith("?"))
+                    {
+                        uri.Append("&");
+                    }
+                }
+
+                foreach(var key in parameters.Keys)
+                {
+                    uri.Append($"{key}={parameters[key]}&");
+                }
+            }
+
+            var response = await apiClient.GetAsync(uri.ToString());
 
             if (!response.IsSuccessStatusCode)
             {
