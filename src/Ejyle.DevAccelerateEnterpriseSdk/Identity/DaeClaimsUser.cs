@@ -13,7 +13,7 @@ namespace Ejyle.DevAccelerate.Enterprise.Identity
         /// Gets the name of a user.
         /// </summary>
         public string Name { get; set; }
-
+        
         /// <summary>
         /// Gets the user's tenant ID.
         /// </summary>
