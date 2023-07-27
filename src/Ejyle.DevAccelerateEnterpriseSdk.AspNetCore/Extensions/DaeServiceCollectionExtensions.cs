@@ -6,6 +6,7 @@
 // ----------------------------------------------------------------------------------------------------------------------
 
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Logging;
 using Microsoft.IdentityModel.Tokens;
@@ -32,8 +33,9 @@ namespace Ejyle.DevAccelerate.Enterprise.AspNetCore.Extensions
         /// <param name="claimsFromUserInfoEndpoint">Determines if user info endpoint is used to retrieve additional claims. The default value is true.</param>
         /// <param name="defaultMapInboundClaims">Determines if the InboundClaimTypeMap is used.</param>
         /// <param name="piiInLogs">Determines if the PII is shown in logs.</param>
+        /// <param name="events">OpenId events.</param>
         /// <returns>Returns an instance of the <see cref="AuthenticationBuilder"/> class which can be used to further configure authentication.</returns>
-        public static AuthenticationBuilder AddDaeOpenIdAuthentication(this IServiceCollection services, string clientId, string clientSecret ,string authority = "https://account.ejyle.com", string[] scopes = null, bool claimsFromUserInfoEndpoint = true, bool defaultMapInboundClaims= false, bool piiInLogs = false)
+        public static AuthenticationBuilder AddDaeOpenIdAuthentication(this IServiceCollection services, string clientId, string clientSecret, string authority = "https://account.ejyle.com", string[] scopes = null, bool claimsFromUserInfoEndpoint = true, bool defaultMapInboundClaims= false, bool piiInLogs = false, OpenIdConnectEvents events = null)
         {
             if(string.IsNullOrEmpty(clientId))
             {
@@ -70,7 +72,12 @@ namespace Ejyle.DevAccelerate.Enterprise.AspNetCore.Extensions
                     RoleClaimType = "role"
                 };
 
-                if (scopes == null)
+                if(events != null)
+                {
+					options.Events = events;
+				}
+
+				if (scopes == null)
                 {
                     foreach (var scope in _scopes)
                     {
