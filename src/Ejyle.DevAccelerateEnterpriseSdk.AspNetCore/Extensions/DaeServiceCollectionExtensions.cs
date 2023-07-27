@@ -6,8 +6,10 @@
 // ----------------------------------------------------------------------------------------------------------------------
 
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Logging;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.IdentityModel.Tokens.Jwt;
 
@@ -31,8 +33,9 @@ namespace Ejyle.DevAccelerate.Enterprise.AspNetCore.Extensions
         /// <param name="claimsFromUserInfoEndpoint">Determines if user info endpoint is used to retrieve additional claims. The default value is true.</param>
         /// <param name="defaultMapInboundClaims">Determines if the InboundClaimTypeMap is used.</param>
         /// <param name="piiInLogs">Determines if the PII is shown in logs.</param>
+        /// <param name="events">OpenId events.</param>
         /// <returns>Returns an instance of the <see cref="AuthenticationBuilder"/> class which can be used to further configure authentication.</returns>
-        public static AuthenticationBuilder AddDaeOpenIdAuthentication(this IServiceCollection services, string clientId, string clientSecret ,string authority = "https://account.ejyle.com", string[] scopes = null, bool claimsFromUserInfoEndpoint = true, bool defaultMapInboundClaims= false, bool piiInLogs = false)
+        public static AuthenticationBuilder AddDaeOpenIdAuthentication(this IServiceCollection services, string clientId, string clientSecret, string authority = "https://account.ejyle.com", string[] scopes = null, bool claimsFromUserInfoEndpoint = true, bool defaultMapInboundClaims= false, bool piiInLogs = false, OpenIdConnectEvents events = null)
         {
             if(string.IsNullOrEmpty(clientId))
             {
@@ -69,7 +72,12 @@ namespace Ejyle.DevAccelerate.Enterprise.AspNetCore.Extensions
                     RoleClaimType = "role"
                 };
 
-                if (scopes == null)
+                if(events != null)
+                {
+					options.Events = events;
+				}
+
+				if (scopes == null)
                 {
                     foreach (var scope in _scopes)
                     {
@@ -87,5 +95,43 @@ namespace Ejyle.DevAccelerate.Enterprise.AspNetCore.Extensions
                 options.GetClaimsFromUserInfoEndpoint = claimsFromUserInfoEndpoint;
             });
         }
-    }
+
+		/// <summary>
+		/// Registers services required by authentication services.
+		/// </summary>
+		/// <param name="services">The <see cref="IServiceCollection"/> parameter.</param>
+		/// <param name="authority">The authority parameter. The default value is https://account.ejyle.com.</param>
+        /// <param name="validateAudience">Determines if the audience will be validated during token validation.</param>
+		/// <returns>Returns an instance of the <see cref="AuthenticationBuilder"/> class which can be used to further configure authentication.</returns>
+		public static AuthenticationBuilder AddDaeBearerTokenAuthentication(this IServiceCollection services, string authority = "https://account.ejyle.com", bool validateAudience = false)
+		{
+			return services.AddAuthentication("Bearer")
+                .AddJwtBearer("Bearer", options =>
+                {
+                    options.Authority = authority;
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateAudience = false
+                    };
+                });
+		}
+
+		/// <summary>
+		/// Adds authorization policy services to <see cref="IServiceCollection"/> requiring API scope.
+		/// </summary>
+		/// <param name="services">The <see cref="IServiceCollection"/> parameter.</param>
+		/// <param name="policy">The name of the policy. The default value is ApiScope.</param>
+		/// <returns>Returns an instance of the <see cref="IServiceCollection"/> class which can be used to further register more services.</returns>
+		public static IServiceCollection AddDaeApiAuthorization(this IServiceCollection services, string policy = "ApiScope")
+		{
+			return services.AddAuthorization(options =>
+			{
+				options.AddPolicy(policy, policy =>
+				{
+					policy.RequireAuthenticatedUser();
+					policy.RequireClaim("scope", "api");
+				});
+			});
+		}
+	}
 }
