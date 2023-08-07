@@ -13,15 +13,15 @@ using System.Threading.Tasks;
 using IdentityModel.Client;
 using Newtonsoft.Json;
 
-namespace Ejyle.DevAccelerate.Enterprise
+namespace Ejyle.DevAccelerate.IAM
 {
     /// <summary>
-    /// Represents the core DevAccelerate Enterprise API wrapper.
+    /// Represents the core DevAccelerate IAM API wrapper.
     /// </summary>
     public class DaeApiConsumer
     {
         private const string DEFAULT_API_VERSION = "v1";
-        private const string DEFAULT_ADDRESS = "https://api.ejyle.com";
+        private const string DEFAULT_ADDRESS = "https://api.iam.ejyle.com";
         /// <summary>
         /// Creates an instance of the <see cref="DaeApiConsumer"/> class.
         /// </summary>
@@ -102,7 +102,7 @@ namespace Ejyle.DevAccelerate.Enterprise
         protected string AccessToken { get; private set; }
 
         /// <summary>
-        /// Calls a DevAccelerate Enterprise API and returns an array of objects.
+        /// Calls a DevAccelerate IAM API and returns an array of objects.
         /// </summary>
         /// <param name="path">The path of the API</param>
         /// <returns>Returns API response as an array of the generic type of T.</returns>
@@ -115,7 +115,7 @@ namespace Ejyle.DevAccelerate.Enterprise
         }
 
         /// <summary>
-        /// Calls a DevAccelerate Enterprise API and returns an array of objects.
+        /// Calls a DevAccelerate IAM API and returns an array of objects.
         /// </summary>
         /// <param name="path">The path of the API</param>
         /// <param name="parameters">The set of parameters to be included in the API call.</param>
@@ -129,7 +129,7 @@ namespace Ejyle.DevAccelerate.Enterprise
         }
 
         /// <summary>
-        /// Calls a DevAccelerate Enterprise API and returns an object.
+        /// Calls a DevAccelerate IAM API and returns an object.
         /// </summary>
         /// <param name="path">The path of the API</param>
         /// <param name="parameters">The set of parameters to be included in the API call.</param>
@@ -143,7 +143,7 @@ namespace Ejyle.DevAccelerate.Enterprise
         }
 
         /// <summary>
-        /// Calls a DevAccelerate Enterprise API and returns an object.
+        /// Calls a DevAccelerate IAM API and returns an object.
         /// </summary>
         /// <param name="path">The path of the API</param>
         /// <returns>Returns API response as an array of the generic type of T.</returns>
@@ -156,7 +156,7 @@ namespace Ejyle.DevAccelerate.Enterprise
         }
 
         /// <summary>
-        /// Calls a DevAccelerate Enterprise API and returns a string response.
+        /// Calls a DevAccelerate IAM API and returns a string response.
         /// </summary>
         /// <param name="path">The path of the API</param>
         /// <returns>Returns API response as a string.</returns>
@@ -167,7 +167,7 @@ namespace Ejyle.DevAccelerate.Enterprise
         }
 
         /// <summary>
-        /// Calls a DevAccelerate Enterprise API and returns a string response.
+        /// Calls a DevAccelerate IAM API and returns a string response.
         /// </summary>
         /// <param name="path">The path of the API</param>
         /// <param name="parameters">The set of parameters to be included in the API call.</param>

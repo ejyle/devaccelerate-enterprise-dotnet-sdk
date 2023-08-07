@@ -1,4 +1,4 @@
-﻿namespace Ejyle.DevAccelerate.Enterprise
+﻿namespace Ejyle.DevAccelerate.IAM
 {
     public class DaeApiResponse<T>
     {

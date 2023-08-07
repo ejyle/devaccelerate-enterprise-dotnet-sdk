@@ -5,23 +5,16 @@
 // Licensed under the MIT license. See the LICENSE file in the project's root directory for complete license information.
 // ----------------------------------------------------------------------------------------------------------------------
 
-namespace Ejyle.DevAccelerate.Enterprise.Identity
+namespace Ejyle.DevAccelerate.IAM.Identity
 {
-    public class DaeClaimsUser : DaeUserBase
+    /// <summary>
+    /// Represents an API user in DevAccelerate IAM.
+    /// </summary>
+    public class DaeUser : DaeUserBase
     {
         /// <summary>
-        /// Gets the name of a user.
+        /// Gets the current status of a user.
         /// </summary>
-        public string Name { get; set; }
-        
-        /// <summary>
-        /// Gets the user's tenant ID.
-        /// </summary>
-        public string Tenant { get; set; }
-
-        /// <summary>
-        /// Gets a list of roles assigned to a user.
-        /// </summary>
-        public string[] Roles { get; set; }
+        public DaeAccountStatus Status { get; set; }
     }
 }

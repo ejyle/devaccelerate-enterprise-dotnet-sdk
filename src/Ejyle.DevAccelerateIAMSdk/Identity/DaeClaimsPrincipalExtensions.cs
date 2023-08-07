@@ -10,10 +10,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 
-namespace Ejyle.DevAccelerate.Enterprise.Identity
+namespace Ejyle.DevAccelerate.IAM.Identity
 {
     /// <summary>
-    /// Contains a set of DevAccelerate Enterprise-specific extensions methods of <see cref="ClaimsPrincipal"/>.
+    /// Contains a set of DevAccelerate IAM-specific extensions methods of <see cref="ClaimsPrincipal"/>.
     /// </summary>
     public static class DaeClaimsPrincipalExtensions
     {
