@@ -7,16 +7,16 @@
 
 using System;
 
-namespace Ejyle.DevAccelerate.Enterprise.Identity
+namespace Ejyle.DevAccelerate.IAM.Identity
 {
     /// <summary>
-    /// Represents a DevAccelerate Enterprise tenant.
+    /// Represents a DevAccelerate IAM tenant.
     /// </summary>
     public class DaeTenant : DaeTenant<string>
     { }
 
     /// <summary>
-    /// Represents a DevAccelerate Enterprise tenant.
+    /// Represents a DevAccelerate IAM tenant.
     /// </summary>
     public class DaeTenant<TKey>
         where TKey : IEquatable<TKey>

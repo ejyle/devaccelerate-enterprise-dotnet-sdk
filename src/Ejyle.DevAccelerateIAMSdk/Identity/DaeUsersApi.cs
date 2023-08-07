@@ -9,10 +9,10 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Ejyle.DevAccelerate.Enterprise.Identity
+namespace Ejyle.DevAccelerate.IAM.Identity
 {
     /// <summary>
-    /// Represents a wrapper of the /users API of DevAccelerate Enterprise.
+    /// Represents a wrapper of the /users API of DevAccelerate IAM.
     /// </summary>
     public class DaeUsersApi : DaeApiConsumer
     {

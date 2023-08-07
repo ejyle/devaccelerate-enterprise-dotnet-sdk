@@ -13,7 +13,7 @@ using Microsoft.IdentityModel.Tokens;
 using System;
 using System.IdentityModel.Tokens.Jwt;
 
-namespace Ejyle.DevAccelerate.Enterprise.AspNetCore.Extensions
+namespace Ejyle.DevAccelerate.IAM.AspNetCore.Extensions
 {
     /// <summary>
     /// Extension methods for setting up authentication services in an <see cref="IServiceCollection" />.
@@ -27,8 +27,8 @@ namespace Ejyle.DevAccelerate.Enterprise.AspNetCore.Extensions
         /// </summary>
         /// <param name="services">The <see cref="IServiceCollection"/> parameter.</param>
         /// <param name="authority">The authority parameter. The default value is https://account.ejyle.com.</param>
-        /// <param name="clientId">The client ID of the DevAccelerate Enterprise API service.</param>
-        /// <param name="clientSecret">The client secret of the DevAccelerate Enterprise API service.</param>
+        /// <param name="clientId">The client ID of the DevAccelerate IAM API service.</param>
+        /// <param name="clientSecret">The client secret of the DevAccelerate IAM API service.</param>
         /// <param name="scopes">An array of scopes. If not provided then the default list of scopes will be used.</param>
         /// <param name="claimsFromUserInfoEndpoint">Determines if user info endpoint is used to retrieve additional claims. The default value is true.</param>
         /// <param name="defaultMapInboundClaims">Determines if the InboundClaimTypeMap is used.</param>
