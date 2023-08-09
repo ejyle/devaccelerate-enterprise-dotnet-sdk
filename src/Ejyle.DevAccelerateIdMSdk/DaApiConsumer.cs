@@ -21,7 +21,7 @@ namespace Ejyle.DevAccelerate.IdM
     public class DaApiConsumer
     {
         private const string DEFAULT_API_VERSION = "v1";
-        private const string DEFAULT_ADDRESS = "https://api.iam.ejyle.com";
+        private const string DEFAULT_ADDRESS = "https://api.idm.da.ejyle.com";
         /// <summary>
         /// Creates an instance of the <see cref="DaApiConsumer"/> class.
         /// </summary>

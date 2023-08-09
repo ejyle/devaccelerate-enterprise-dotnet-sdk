@@ -26,7 +26,7 @@ namespace Ejyle.DevAccelerate.IdM.AspNetCore.Extensions
         /// Registers services required by authentication services.
         /// </summary>
         /// <param name="services">The <see cref="IServiceCollection"/> parameter.</param>
-        /// <param name="authority">The authority parameter. The default value is https://account.ejyle.com.</param>
+        /// <param name="authority">The authority parameter. The default value is https://idm.da.ejyle.com.</param>
         /// <param name="clientId">The client ID of the DevAccelerate IAM API service.</param>
         /// <param name="clientSecret">The client secret of the DevAccelerate IAM API service.</param>
         /// <param name="scopes">An array of scopes. If not provided then the default list of scopes will be used.</param>
@@ -35,7 +35,7 @@ namespace Ejyle.DevAccelerate.IdM.AspNetCore.Extensions
         /// <param name="piiInLogs">Determines if the PII is shown in logs.</param>
         /// <param name="events">OpenId events.</param>
         /// <returns>Returns an instance of the <see cref="AuthenticationBuilder"/> class which can be used to further configure authentication.</returns>
-        public static AuthenticationBuilder AddDaeOpenIdAuthentication(this IServiceCollection services, string clientId, string clientSecret, string authority = "https://account.ejyle.com", string[] scopes = null, bool claimsFromUserInfoEndpoint = true, bool defaultMapInboundClaims= false, bool piiInLogs = false, OpenIdConnectEvents events = null)
+        public static AuthenticationBuilder AddDaeOpenIdAuthentication(this IServiceCollection services, string clientId, string clientSecret, string authority = "https://idm.da.ejyle.com", string[] scopes = null, bool claimsFromUserInfoEndpoint = true, bool defaultMapInboundClaims= false, bool piiInLogs = false, OpenIdConnectEvents events = null)
         {
             if(string.IsNullOrEmpty(clientId))
             {
@@ -100,10 +100,10 @@ namespace Ejyle.DevAccelerate.IdM.AspNetCore.Extensions
 		/// Registers services required by authentication services.
 		/// </summary>
 		/// <param name="services">The <see cref="IServiceCollection"/> parameter.</param>
-		/// <param name="authority">The authority parameter. The default value is https://account.ejyle.com.</param>
+		/// <param name="authority">The authority parameter. The default value is https://idm.da.ejyle.com.</param>
         /// <param name="validateAudience">Determines if the audience will be validated during token validation.</param>
 		/// <returns>Returns an instance of the <see cref="AuthenticationBuilder"/> class which can be used to further configure authentication.</returns>
-		public static AuthenticationBuilder AddDaeBearerTokenAuthentication(this IServiceCollection services, string authority = "https://account.ejyle.com", bool validateAudience = false)
+		public static AuthenticationBuilder AddDaeBearerTokenAuthentication(this IServiceCollection services, string authority = "https://idm.da.ejyle.com", bool validateAudience = false)
 		{
 			return services.AddAuthentication("Bearer")
                 .AddJwtBearer("Bearer", options =>
