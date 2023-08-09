@@ -8,7 +8,7 @@
 namespace Ejyle.DevAccelerate.IdM.Identity
 {
     /// <summary>
-    /// Represents an API user in DevAccelerate IAM.
+    /// Represents an API user in DevAccelerate IdM.
     /// </summary>
     public class DaUser : DaUserBase
     {

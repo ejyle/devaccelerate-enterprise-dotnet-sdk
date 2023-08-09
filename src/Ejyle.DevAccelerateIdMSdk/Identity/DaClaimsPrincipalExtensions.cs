@@ -13,7 +13,7 @@ using System.Security.Claims;
 namespace Ejyle.DevAccelerate.IdM.Identity
 {
     /// <summary>
-    /// Contains a set of DevAccelerate IAM-specific extensions methods of <see cref="ClaimsPrincipal"/>.
+    /// Contains a set of DevAccelerate IdM-specific extensions methods of <see cref="ClaimsPrincipal"/>.
     /// </summary>
     public static class DaClaimsPrincipalExtensions
     {
@@ -22,7 +22,7 @@ namespace Ejyle.DevAccelerate.IdM.Identity
         /// </summary>
         /// <param name="claimsPrincipal">The claims principal.</param>
         /// <returns>Returns an instance of the <see cref="DaClaimsUser"/> class.</returns>
-        public static DaClaimsUser GetDaeUser(this ClaimsPrincipal claimsPrincipal)
+        public static DaClaimsUser GetDaUser(this ClaimsPrincipal claimsPrincipal)
         {
             var claims = claimsPrincipal.Claims;
 

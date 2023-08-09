@@ -27,15 +27,15 @@ namespace Ejyle.DevAccelerate.IdM.AspNetCore.Extensions
         /// </summary>
         /// <param name="services">The <see cref="IServiceCollection"/> parameter.</param>
         /// <param name="authority">The authority parameter. The default value is https://idm.da.ejyle.com.</param>
-        /// <param name="clientId">The client ID of the DevAccelerate IAM API service.</param>
-        /// <param name="clientSecret">The client secret of the DevAccelerate IAM API service.</param>
+        /// <param name="clientId">The client ID of the DevAccelerate IdM API service.</param>
+        /// <param name="clientSecret">The client secret of the DevAccelerate IdM API service.</param>
         /// <param name="scopes">An array of scopes. If not provided then the default list of scopes will be used.</param>
         /// <param name="claimsFromUserInfoEndpoint">Determines if user info endpoint is used to retrieve additional claims. The default value is true.</param>
         /// <param name="defaultMapInboundClaims">Determines if the InboundClaimTypeMap is used.</param>
         /// <param name="piiInLogs">Determines if the PII is shown in logs.</param>
         /// <param name="events">OpenId events.</param>
         /// <returns>Returns an instance of the <see cref="AuthenticationBuilder"/> class which can be used to further configure authentication.</returns>
-        public static AuthenticationBuilder AddDaeOpenIdAuthentication(this IServiceCollection services, string clientId, string clientSecret, string authority = "https://idm.da.ejyle.com", string[] scopes = null, bool claimsFromUserInfoEndpoint = true, bool defaultMapInboundClaims= false, bool piiInLogs = false, OpenIdConnectEvents events = null)
+        public static AuthenticationBuilder AddDaOpenIdAuthentication(this IServiceCollection services, string clientId, string clientSecret, string authority = "https://idm.da.ejyle.com", string[] scopes = null, bool claimsFromUserInfoEndpoint = true, bool defaultMapInboundClaims= false, bool piiInLogs = false, OpenIdConnectEvents events = null)
         {
             if(string.IsNullOrEmpty(clientId))
             {
@@ -103,7 +103,7 @@ namespace Ejyle.DevAccelerate.IdM.AspNetCore.Extensions
 		/// <param name="authority">The authority parameter. The default value is https://idm.da.ejyle.com.</param>
         /// <param name="validateAudience">Determines if the audience will be validated during token validation.</param>
 		/// <returns>Returns an instance of the <see cref="AuthenticationBuilder"/> class which can be used to further configure authentication.</returns>
-		public static AuthenticationBuilder AddDaeBearerTokenAuthentication(this IServiceCollection services, string authority = "https://idm.da.ejyle.com", bool validateAudience = false)
+		public static AuthenticationBuilder AddDaBearerTokenAuthentication(this IServiceCollection services, string authority = "https://idm.da.ejyle.com", bool validateAudience = false)
 		{
 			return services.AddAuthentication("Bearer")
                 .AddJwtBearer("Bearer", options =>
@@ -122,7 +122,7 @@ namespace Ejyle.DevAccelerate.IdM.AspNetCore.Extensions
 		/// <param name="services">The <see cref="IServiceCollection"/> parameter.</param>
 		/// <param name="policy">The name of the policy. The default value is ApiScope.</param>
 		/// <returns>Returns an instance of the <see cref="IServiceCollection"/> class which can be used to further register more services.</returns>
-		public static IServiceCollection AddDaeApiAuthorization(this IServiceCollection services, string policy = "ApiScope")
+		public static IServiceCollection AddDaApiAuthorization(this IServiceCollection services, string policy = "ApiScope")
 		{
 			return services.AddAuthorization(options =>
 			{

@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace Ejyle.DevAccelerate.IdM.Identity
 {
     /// <summary>
-    /// Represents a wrapper of the /users API of DevAccelerate IAM.
+    /// Represents a wrapper of the /users API of DevAccelerate IdM.
     /// </summary>
     public class DaUsersApi : DaApiConsumer
     {

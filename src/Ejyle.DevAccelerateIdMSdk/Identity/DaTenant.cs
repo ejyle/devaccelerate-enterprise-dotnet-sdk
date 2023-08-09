@@ -10,15 +10,15 @@ using System;
 namespace Ejyle.DevAccelerate.IdM.Identity
 {
     /// <summary>
-    /// Represents a DevAccelerate IAM tenant.
+    /// Represents a DevAccelerate IdM tenant.
     /// </summary>
-    public class DaTenant : DaeTenant<string>
+    public class DaTenant : DaTenant<string>
     { }
 
     /// <summary>
-    /// Represents a DevAccelerate IAM tenant.
+    /// Represents a DevAccelerate IdM tenant.
     /// </summary>
-    public class DaeTenant<TKey>
+    public class DaTenant<TKey>
         where TKey : IEquatable<TKey>
     {
         /// <summary>

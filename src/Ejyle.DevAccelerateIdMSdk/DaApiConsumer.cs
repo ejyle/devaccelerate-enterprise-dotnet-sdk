@@ -16,7 +16,7 @@ using Newtonsoft.Json;
 namespace Ejyle.DevAccelerate.IdM
 {
     /// <summary>
-    /// Represents the core DevAccelerate IAM API wrapper.
+    /// Represents the core DevAccelerate IdM API wrapper.
     /// </summary>
     public class DaApiConsumer
     {
@@ -102,7 +102,7 @@ namespace Ejyle.DevAccelerate.IdM
         protected string AccessToken { get; private set; }
 
         /// <summary>
-        /// Calls a DevAccelerate IAM API and returns an array of objects.
+        /// Calls a DevAccelerate IdM API and returns an array of objects.
         /// </summary>
         /// <param name="path">The path of the API</param>
         /// <returns>Returns API response as an array of the generic type of T.</returns>
@@ -110,12 +110,12 @@ namespace Ejyle.DevAccelerate.IdM
         public async Task<T[]> GetArrayAsync<T>(string path)
         {
             var response = await GetStringAsync(path);
-            var deserializedData = JsonConvert.DeserializeObject<DaeApiResponseArray<T>>(response);
+            var deserializedData = JsonConvert.DeserializeObject<DaApiResponseArray<T>>(response);
             return deserializedData.Data;
         }
 
         /// <summary>
-        /// Calls a DevAccelerate IAM API and returns an array of objects.
+        /// Calls a DevAccelerate IdM API and returns an array of objects.
         /// </summary>
         /// <param name="path">The path of the API</param>
         /// <param name="parameters">The set of parameters to be included in the API call.</param>
@@ -124,12 +124,12 @@ namespace Ejyle.DevAccelerate.IdM
         public async Task<T[]> GetArrayAsync<T>(string path, Dictionary<string, string> parameters)
         {
             var response = await GetStringAsync(path, parameters);
-            var deserializedData = JsonConvert.DeserializeObject<DaeApiResponseArray<T>>(response);
+            var deserializedData = JsonConvert.DeserializeObject<DaApiResponseArray<T>>(response);
             return deserializedData.Data;
         }
 
         /// <summary>
-        /// Calls a DevAccelerate IAM API and returns an object.
+        /// Calls a DevAccelerate IdM API and returns an object.
         /// </summary>
         /// <param name="path">The path of the API</param>
         /// <param name="parameters">The set of parameters to be included in the API call.</param>
@@ -143,7 +143,7 @@ namespace Ejyle.DevAccelerate.IdM
         }
 
         /// <summary>
-        /// Calls a DevAccelerate IAM API and returns an object.
+        /// Calls a DevAccelerate IdM API and returns an object.
         /// </summary>
         /// <param name="path">The path of the API</param>
         /// <returns>Returns API response as an array of the generic type of T.</returns>
@@ -156,7 +156,7 @@ namespace Ejyle.DevAccelerate.IdM
         }
 
         /// <summary>
-        /// Calls a DevAccelerate IAM API and returns a string response.
+        /// Calls a DevAccelerate IdM API and returns a string response.
         /// </summary>
         /// <param name="path">The path of the API</param>
         /// <returns>Returns API response as a string.</returns>
@@ -167,7 +167,7 @@ namespace Ejyle.DevAccelerate.IdM
         }
 
         /// <summary>
-        /// Calls a DevAccelerate IAM API and returns a string response.
+        /// Calls a DevAccelerate IdM API and returns a string response.
         /// </summary>
         /// <param name="path">The path of the API</param>
         /// <param name="parameters">The set of parameters to be included in the API call.</param>
