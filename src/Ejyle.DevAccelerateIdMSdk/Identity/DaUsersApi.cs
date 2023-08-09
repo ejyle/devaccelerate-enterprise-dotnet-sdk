@@ -9,39 +9,39 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Ejyle.DevAccelerate.IAM.Identity
+namespace Ejyle.DevAccelerate.IdM.Identity
 {
     /// <summary>
     /// Represents a wrapper of the /users API of DevAccelerate IAM.
     /// </summary>
-    public class DaeUsersApi : DaeApiConsumer
+    public class DaUsersApi : DaApiConsumer
     {
         /// <summary>
-        /// Creates an instance of the <see cref="DaeUsersApi"/> class.
+        /// Creates an instance of the <see cref="DaUsersApi"/> class.
         /// </summary>
         /// <param name="accessToken">The access token.</param>
         /// <param name="apiVersion">The API version.</param>
         /// <param name="address">The root address of the APIs.</param>
         /// <exception cref="ArgumentNullException">If address or apiVersion, accessToken is empty or null.</exception>
-        public DaeUsersApi(string address, string apiVersion, string accessToken)
+        public DaUsersApi(string address, string apiVersion, string accessToken)
             : base(address, apiVersion, accessToken) { }
 
 
         /// <summary>
-        /// Creates an instance of the <see cref="DaeUsersApi"/> class.
+        /// Creates an instance of the <see cref="DaUsersApi"/> class.
         /// </summary>
         /// <param name="address">The root address of the APIs.</param> 
         /// <param name="accessToken">The access token.</param>
         /// <exception cref="ArgumentNullException">If address or accessToken is empty or null.</exception>
-        public DaeUsersApi(string address, string accessToken)
+        public DaUsersApi(string address, string accessToken)
         : base(address, accessToken) { }
 
         /// <summary>
-        /// Creates an instance of the <see cref="DaeUsersApi"/> class.
+        /// Creates an instance of the <see cref="DaUsersApi"/> class.
         /// </summary>
         /// <param name="accessToken">The access token.</param>
         /// <exception cref="ArgumentNullException">If accessToken is empty or null.</exception>
-        public DaeUsersApi(string accessToken)
+        public DaUsersApi(string accessToken)
         : base(accessToken) { }
 
         /// <summary>
@@ -56,10 +56,10 @@ namespace Ejyle.DevAccelerate.IAM.Identity
         /// <summary>
         /// Gets a list of users.
         /// </summary>
-        /// <returns>Returns an array of <see cref="DaeUser"/>.</returns>
-        public async Task<DaeUser[]> GetUsersAsync()
+        /// <returns>Returns an array of <see cref="DaUser"/>.</returns>
+        public async Task<DaUser[]> GetUsersAsync()
         {
-            var users = await GetArrayAsync<DaeUser>("users");
+            var users = await GetArrayAsync<DaUser>("users");
             return users;
         }
 
@@ -67,9 +67,9 @@ namespace Ejyle.DevAccelerate.IAM.Identity
         /// Gets a user by ID.
         /// </summary>
         /// <param name="id">The ID of the user.</param>
-        public async Task<DaeUser> GetUserByIdAsync(string id)
+        public async Task<DaUser> GetUserByIdAsync(string id)
         {
-            return await GetAsync<DaeUser>("users" , new Dictionary<string, string> { { "id", id } });
+            return await GetAsync<DaUser>("users" , new Dictionary<string, string> { { "id", id } });
         }
 
         /// <summary>

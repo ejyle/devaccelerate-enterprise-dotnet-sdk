@@ -13,12 +13,12 @@ using Microsoft.IdentityModel.Tokens;
 using System;
 using System.IdentityModel.Tokens.Jwt;
 
-namespace Ejyle.DevAccelerate.IAM.AspNetCore.Extensions
+namespace Ejyle.DevAccelerate.IdM.AspNetCore.Extensions
 {
     /// <summary>
     /// Extension methods for setting up authentication services in an <see cref="IServiceCollection" />.
     /// </summary>
-    public static class DaeServiceCollectionExtensions
+    public static class DaServiceCollectionExtensions
     {
         private static string[] _scopes = { "email", "phone", "role", "tenant", "api" };
 

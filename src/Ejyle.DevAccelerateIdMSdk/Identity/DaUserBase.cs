@@ -5,12 +5,12 @@
 // Licensed under the MIT license. See the LICENSE file in the project's root directory for complete license information.
 // ----------------------------------------------------------------------------------------------------------------------
 
-namespace Ejyle.DevAccelerate.IAM.Identity
+namespace Ejyle.DevAccelerate.IdM.Identity
 {
     /// <summary>
     /// Represents the base class of a user.
     /// </summary>
-    public abstract class DaeUserBase
+    public abstract class DaUserBase
     {
         /// <summary>
         /// Gets the unique of a user.

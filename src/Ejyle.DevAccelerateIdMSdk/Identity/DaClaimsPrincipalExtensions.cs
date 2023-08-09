@@ -10,19 +10,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 
-namespace Ejyle.DevAccelerate.IAM.Identity
+namespace Ejyle.DevAccelerate.IdM.Identity
 {
     /// <summary>
     /// Contains a set of DevAccelerate IAM-specific extensions methods of <see cref="ClaimsPrincipal"/>.
     /// </summary>
-    public static class DaeClaimsPrincipalExtensions
+    public static class DaClaimsPrincipalExtensions
     {
         /// <summary>
-        /// Creates an instance <see cref="DaeClaimsUser"/> based on a set of available claims.
+        /// Creates an instance <see cref="DaClaimsUser"/> based on a set of available claims.
         /// </summary>
         /// <param name="claimsPrincipal">The claims principal.</param>
-        /// <returns>Returns an instance of the <see cref="DaeClaimsUser"/> class.</returns>
-        public static DaeClaimsUser GetDaeUser(this ClaimsPrincipal claimsPrincipal)
+        /// <returns>Returns an instance of the <see cref="DaClaimsUser"/> class.</returns>
+        public static DaClaimsUser GetDaeUser(this ClaimsPrincipal claimsPrincipal)
         {
             var claims = claimsPrincipal.Claims;
 
@@ -31,7 +31,7 @@ namespace Ejyle.DevAccelerate.IAM.Identity
                 return null;
             }
 
-            var user = new DaeClaimsUser();
+            var user = new DaClaimsUser();
 
             var roles = new List<string>();
 

@@ -5,23 +5,28 @@
 // Licensed under the MIT license. See the LICENSE file in the project's root directory for complete license information.
 // ----------------------------------------------------------------------------------------------------------------------
 
-namespace Ejyle.DevAccelerate.IAM.Identity
+namespace Ejyle.DevAccelerate.IdM.Identity
 {
-    public class DaeClaimsUser : DaeUserBase
+    /// <summary>
+    /// Represents the status of a user or a tenant account.
+    /// </summary>
+    public enum DaAccountStatus
     {
         /// <summary>
-        /// Gets the name of a user.
+        /// Account is not activve.
         /// </summary>
-        public string Name { get; set; }
-        
+        Inactive = 0,
         /// <summary>
-        /// Gets the user's tenant ID.
+        /// Account is active.
         /// </summary>
-        public string Tenant { get; set; }
-
+        Active = 1,
         /// <summary>
-        /// Gets a list of roles assigned to a user.
+        /// Account is suspended.
         /// </summary>
-        public string[] Roles { get; set; }
+        Suspended = 2,
+        /// <summary>
+        /// Account is closed.
+        /// </summary>
+        Closed = 3
     }
 }

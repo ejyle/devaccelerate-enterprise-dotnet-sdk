@@ -13,23 +13,23 @@ using System.Threading.Tasks;
 using IdentityModel.Client;
 using Newtonsoft.Json;
 
-namespace Ejyle.DevAccelerate.IAM
+namespace Ejyle.DevAccelerate.IdM
 {
     /// <summary>
     /// Represents the core DevAccelerate IAM API wrapper.
     /// </summary>
-    public class DaeApiConsumer
+    public class DaApiConsumer
     {
         private const string DEFAULT_API_VERSION = "v1";
         private const string DEFAULT_ADDRESS = "https://api.iam.ejyle.com";
         /// <summary>
-        /// Creates an instance of the <see cref="DaeApiConsumer"/> class.
+        /// Creates an instance of the <see cref="DaApiConsumer"/> class.
         /// </summary>
         /// <param name="accessToken">The access token.</param>
         /// <param name="apiVersion">The API version.</param>
         /// <param name="address">The root address of the APIs.</param>
         /// <exception cref="ArgumentNullException">If address or apiVersion, accessToken is empty or null.</exception>
-        public DaeApiConsumer(string address, string apiVersion, string accessToken)
+        public DaApiConsumer(string address, string apiVersion, string accessToken)
         {
             if (string.IsNullOrEmpty(address))
             {
@@ -52,12 +52,12 @@ namespace Ejyle.DevAccelerate.IAM
         }
 
         /// <summary>
-        /// Creates an instance of the <see cref="DaeApiConsumer"/> class.
+        /// Creates an instance of the <see cref="DaApiConsumer"/> class.
         /// </summary>
         /// <param name="address">The root address of the APIs.</param> 
         /// <param name="accessToken">The access token.</param>
         /// <exception cref="ArgumentNullException">If address or accessToken is empty or null.</exception>
-        public DaeApiConsumer(string address, string accessToken)
+        public DaApiConsumer(string address, string accessToken)
         {
             if (string.IsNullOrEmpty(accessToken))
             {
@@ -70,11 +70,11 @@ namespace Ejyle.DevAccelerate.IAM
         }
 
         /// <summary>
-        /// Creates an instance of the <see cref="DaeApiConsumer"/> class.
+        /// Creates an instance of the <see cref="DaApiConsumer"/> class.
         /// </summary>
         /// <param name="accessToken">The access token.</param>
         /// <exception cref="ArgumentNullException">If accessToken is empty or null.</exception>
-        public DaeApiConsumer(string accessToken)
+        public DaApiConsumer(string accessToken)
         {
             if (string.IsNullOrEmpty(accessToken))
             {
@@ -138,7 +138,7 @@ namespace Ejyle.DevAccelerate.IAM
         public async Task<T> GetAsync<T>(string path, Dictionary<string, string> parameters)
         {
             var response = await GetStringAsync(path, parameters);
-            var deserializedData = JsonConvert.DeserializeObject<DaeApiResponse<T>> (response);
+            var deserializedData = JsonConvert.DeserializeObject<DaApiResponse<T>> (response);
             return deserializedData.Data;
         }
 

@@ -7,12 +7,12 @@
 
 using System;
 
-namespace Ejyle.DevAccelerate.IAM.Identity
+namespace Ejyle.DevAccelerate.IdM.Identity
 {
     /// <summary>
     /// Represents a DevAccelerate IAM tenant.
     /// </summary>
-    public class DaeTenant : DaeTenant<string>
+    public class DaTenant : DaeTenant<string>
     { }
 
     /// <summary>
@@ -39,7 +39,7 @@ namespace Ejyle.DevAccelerate.IAM.Identity
         /// <summary>
         /// Gets the current status of a tenant.
         /// </summary>
-        public DaeTenantStatus Status { get; set; }
+        public DaTenantStatus Status { get; set; }
 
         /// <summary>
         /// Gets the ID of a user who owns the tenant.
