@@ -9,39 +9,39 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Ejyle.DevAccelerate.IAM.Identity
+namespace Ejyle.DevAccelerate.IdM.Identity
 {
     /// <summary>
     /// Represents a wrapper of the /tenants API of DevAccelerate IAM.
     /// </summary>
-    public class DaeTenantsApi : DaeApiConsumer
+    public class DaTenantsApi : DaApiConsumer
     {
         /// <summary>
-        /// Creates an instance of the <see cref="DaeTenantsApi"/> class.
+        /// Creates an instance of the <see cref="DaTenantsApi"/> class.
         /// </summary>
         /// <param name="accessToken">The access token.</param>
         /// <param name="apiVersion">The API version.</param>
         /// <param name="address">The root address of the APIs.</param>
         /// <exception cref="ArgumentNullException">If address or apiVersion, accessToken is empty or null.</exception>
-        public DaeTenantsApi(string address, string apiVersion, string accessToken)
+        public DaTenantsApi(string address, string apiVersion, string accessToken)
             : base(address, apiVersion, accessToken) { }
 
 
         /// <summary>
-        /// Creates an instance of the <see cref="DaeTenantsApi"/> class.
+        /// Creates an instance of the <see cref="DaTenantsApi"/> class.
         /// </summary>
         /// <param name="address">The root address of the APIs.</param> 
         /// <param name="accessToken">The access token.</param>
         /// <exception cref="ArgumentNullException">If address or accessToken is empty or null.</exception>
-        public DaeTenantsApi(string address, string accessToken)
+        public DaTenantsApi(string address, string accessToken)
         : base(address, accessToken) { }
 
         /// <summary>
-        /// Creates an instance of the <see cref="DaeTenantsApi"/> class.
+        /// Creates an instance of the <see cref="DaTenantsApi"/> class.
         /// </summary>
         /// <param name="accessToken">The access token.</param>
         /// <exception cref="ArgumentNullException">If accessToken is empty or null.</exception>
-        public DaeTenantsApi(string accessToken)
+        public DaTenantsApi(string accessToken)
         : base(accessToken) { }
 
         /// <summary>
@@ -65,10 +65,10 @@ namespace Ejyle.DevAccelerate.IAM.Identity
         /// <summary>
         /// Gets a list of tenants.
         /// </summary>
-        /// <returns>Returns an array of <see cref="DaeTenant"/>.</returns>
-        public async Task<DaeTenant[]> GetTenantsAsync()
+        /// <returns>Returns an array of <see cref="DaTenant"/>.</returns>
+        public async Task<DaTenant[]> GetTenantsAsync()
         {
-            var tenants = await GetArrayAsync<DaeTenant>("tenants");
+            var tenants = await GetArrayAsync<DaTenant>("tenants");
             return tenants;
         }
 
@@ -76,10 +76,10 @@ namespace Ejyle.DevAccelerate.IAM.Identity
         /// Gets a tenant by ID.
         /// </summary>
         /// <param name="id">The ID of the tenant.</param>
-        /// <returns>Returns an instance of the <see cref="DaeTenant"/> class.</returns>
-        public async Task<DaeTenant> GetTenantByIdAsync(string id)
+        /// <returns>Returns an instance of the <see cref="DaTenant"/> class.</returns>
+        public async Task<DaTenant> GetTenantByIdAsync(string id)
         {
-            return await GetAsync<DaeTenant>("tenants", new Dictionary<string, string> { { "id", id } });
+            return await GetAsync<DaTenant>("tenants", new Dictionary<string, string> { { "id", id } });
         }
     }
 }

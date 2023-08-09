@@ -1,6 +1,6 @@
-﻿namespace Ejyle.DevAccelerate.IAM
+﻿namespace Ejyle.DevAccelerate.IdM
 {
-    public class DaeApiResponse<T>
+    public class DaApiResponse<T>
     {
         public T Data { get; set; }
     }

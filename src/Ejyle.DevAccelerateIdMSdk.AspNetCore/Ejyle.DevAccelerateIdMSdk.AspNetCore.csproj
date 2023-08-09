@@ -1,7 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<VersionPrefix>1.0.0</VersionPrefix>
-		<VersionSuffix>preview1.0</VersionSuffix>
+		<Version>1.0.1</Version>
 		<TargetFrameworks>net7.0</TargetFrameworks>
 		<PlatformTarget>anycpu</PlatformTarget>
 		<GenerateDocumentationFile>false</GenerateDocumentationFile>
@@ -11,8 +10,8 @@
 		<AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb;.xml</AllowedOutputExtensionsInPackageBuildOutputFolder>		
 	</PropertyGroup>
 	<PropertyGroup>
-		<RootNamespace>Ejyle.DevAccelerate.IAM.AspNetCore</RootNamespace>
-		<AssemblyName>Ejyle.DevAccelerateIAMSdk.AspNetCore</AssemblyName>
+		<RootNamespace>Ejyle.DevAccelerate.IdM.AspNetCore</RootNamespace>
+		<AssemblyName>Ejyle.DevAccelerateIdMSdk.AspNetCore</AssemblyName>
 		<ApplicationIcon>da.ico</ApplicationIcon>
 		<Company>Ejyle Technologies (P) Ltd</Company>
 		<Authors>Tanveer Yousuf</Authors>
@@ -21,12 +20,12 @@
 		<RepositoryUrl>https://github.com/ejyle/devaccelerate-iam-dotnet-sdk.git</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-		<PackageId>DevAccelerateIAMSdkAspNetCore</PackageId>
-		<Product>DevAccelerateIAMSdkAspNetCore</Product>
-		<Description>A DevAccelerate IAM SDK with extensions for ASP.NET Core applications.</Description>
-		<PackageTags>Ejyle;DevAccelerate;IAM;DevAccelerateIAM;DevAccelerateIAMSdk;SSO;IAM;Identity;Identity-Access-Management;OIDC;ASPNetCore</PackageTags>
+		<PackageId>DevAccelerateIdMSdkAspNetCore</PackageId>
+		<Product>DevAccelerateIdMSdkAspNetCore</Product>
+		<Description>A DevAccelerate IdM SDK with extensions for ASP.NET Core applications.</Description>
+		<PackageTags>Ejyle;DevAccelerate;IdM;DevAccelerateIdM;DevAccelerateIdMSdk;SSO;IAM;Identity;Identity-Management;OIDC;ASPNetCore</PackageTags>
 		<Nullable>disable</Nullable>		
-		<PackageReleaseNotes>Please see https://github.com/ejyle/devaccelerate-iam-dotnet-sdk/releases</PackageReleaseNotes>
+		<PackageReleaseNotes>Please see https://github.com/ejyle/devaccelerate-idm-dotnet-sdk/releases</PackageReleaseNotes>
 		<PackageIcon>logo.png</PackageIcon>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>

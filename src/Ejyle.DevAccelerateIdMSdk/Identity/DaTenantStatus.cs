@@ -5,21 +5,28 @@
 // Licensed under the MIT license. See the LICENSE file in the project's root directory for complete license information.
 // ----------------------------------------------------------------------------------------------------------------------
 
-namespace Ejyle.DevAccelerate.IAM.Identity
+namespace Ejyle.DevAccelerate.IdM.Identity
 {
     /// <summary>
-    /// Represents a claim.
+    /// Represents the status of a tenant account.
     /// </summary>
-    public class DaeClaim
+    public enum DaTenantStatus
     {
         /// <summary>
-        /// Gets the type of a claim.
+        /// Tenant is not activve.
         /// </summary>
-        public string Type { get; set; }
-
+        Inactive = 0,
         /// <summary>
-        /// Gets the value of a claim.
+        /// Tenant is active.
         /// </summary>
-        public string Value { get; set; }
+        Active = 1,
+        /// <summary>
+        /// Tenant is suspended.
+        /// </summary>
+        Suspended = 2,
+        /// <summary>
+        /// Tenant is closed.
+        /// </summary>
+        Closed = 3
     }
 }
