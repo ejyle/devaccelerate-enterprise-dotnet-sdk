@@ -5,7 +5,7 @@
         public T Data { get; set; }
     }
 
-    public class DaeApiResponseArray<T>
+    public class DaApiResponseArray<T>
     {
         public int TotalCount { get; set; }
         public T[] Data { get; set; }
