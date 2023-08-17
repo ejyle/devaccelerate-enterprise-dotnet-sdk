@@ -6,6 +6,7 @@
 // ----------------------------------------------------------------------------------------------------------------------
 
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Logging;
@@ -33,9 +34,10 @@ namespace Ejyle.DevAccelerate.IdM.AspNetCore.Extensions
         /// <param name="claimsFromUserInfoEndpoint">Determines if user info endpoint is used to retrieve additional claims. The default value is true.</param>
         /// <param name="defaultMapInboundClaims">Determines if the InboundClaimTypeMap is used.</param>
         /// <param name="piiInLogs">Determines if the PII is shown in logs.</param>
-        /// <param name="events">OpenId events.</param>
+        /// <param name="openIdEvents">OpenId events.</param>
+        /// <param name="cookieAuthenticationCookieEvents">Cookie authentication events.</param>
         /// <returns>Returns an instance of the <see cref="AuthenticationBuilder"/> class which can be used to further configure authentication.</returns>
-        public static AuthenticationBuilder AddDaOpenIdAuthentication(this IServiceCollection services, string clientId, string clientSecret, string authority = "https://idm.da.ejyle.com", string[] scopes = null, bool claimsFromUserInfoEndpoint = true, bool defaultMapInboundClaims= false, bool piiInLogs = false, OpenIdConnectEvents events = null)
+        public static AuthenticationBuilder AddDaOpenIdAuthentication(this IServiceCollection services, string clientId, string clientSecret, string authority = "https://idm.da.ejyle.com", string[] scopes = null, bool claimsFromUserInfoEndpoint = true, bool defaultMapInboundClaims= false, bool piiInLogs = false, OpenIdConnectEvents openIdEvents = null, CookieAuthenticationEvents cookieAuthenticationCookieEvents = null)
         {
             if(string.IsNullOrEmpty(clientId))
             {
@@ -55,7 +57,13 @@ namespace Ejyle.DevAccelerate.IdM.AspNetCore.Extensions
                 options.DefaultScheme = "Cookies";
                 options.DefaultChallengeScheme = "oidc";
             })
-            .AddCookie("Cookies")
+            .AddCookie("Cookies", options =>
+            {
+                if (cookieAuthenticationCookieEvents != null)
+                {
+                    options.Events = cookieAuthenticationCookieEvents;
+                }
+            })
             .AddOpenIdConnect("oidc", options =>
             {
                 options.Authority = authority;
@@ -72,9 +80,9 @@ namespace Ejyle.DevAccelerate.IdM.AspNetCore.Extensions
                     RoleClaimType = "role"
                 };
 
-                if(events != null)
+                if(openIdEvents != null)
                 {
-					options.Events = events;
+					options.Events = openIdEvents;
 				}
 
 				if (scopes == null)
